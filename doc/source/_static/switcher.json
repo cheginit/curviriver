@@ -1,0 +1,17 @@
+[
+  {
+    "version": "dev",
+    "url": "https://geomesher.readthedocs.io/en/latest/"
+  },
+  {
+    "name": "0.1.0 (stable)",
+    "version": "v0.1.1",
+    "url": "https://geomesher.readthedocs.io/en/v0.1.1/",
+    "preferred": true
+  },
+  {
+    "name": "0.1.0",
+    "version": "v0.1.0",
+    "url": "https://geomesher.readthedocs.io/en/stable/"
+  }
+]
