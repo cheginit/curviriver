@@ -10,9 +10,9 @@ name = "curviriver"
 description = "Generate curvilinear mesh from river outline polygons"
 readme = { file = "README.rst", content-type = "text/x-rst" }
 keywords = [
-  'shapely',
-  'mesh',
   'curvilinear grid',
+  'mesh',
+  'shapely',
 ]
 license = { text = "MIT" }
 maintainers = [{ name = "Taher Chegini", email = "cheginit@gmail.com" }]
