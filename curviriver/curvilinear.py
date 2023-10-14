@@ -26,8 +26,8 @@ from curviriver import smoothing
 from curviriver.exceptions import (
     InputRangeError,
     InputTypeError,
-    NoIntersectionError,
     LineIntersectionError,
+    NoIntersectionError,
     NoMainCenterlineError,
     TooFewRidgesError,
 )
@@ -149,14 +149,14 @@ def line_extension(
 
     # Only need the boundary intersection
     p_exterior = LinearRing(poly.exterior.coords)
+    if isinstance(line.intersects(p_exterior), LineString):
+        raise LineIntersectionError
     l_coords = list(line.coords)
     l_coords = cast("list[tuple[float, float]]", l_coords)
     while True:
         # Only use the last two points
         l_extraploated = _extraplolation(*l_coords[-2:])
         intersection_points = p_exterior.intersection(l_extraploated)
-        if isinstance(intersection_points, LineString):
-            raise LineIntersectionError
 
         if not isinstance(intersection_points, (Point, MultiPoint)):
             new_point_coords = cast("tuple[float, float]", l_extraploated.coords[1])
