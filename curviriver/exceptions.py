@@ -15,6 +15,16 @@ class MissingCRSError(Exception):
         return self.message
 
 
+class MissingArgError(Exception):
+    """Exception raised when a required argument is missing."""
+
+    def __init__(self, arg_name: str, reason: str | None = None) -> None:
+        self.message = f"Argument {arg_name} is missing."
+        if reason is not None:
+            self.message += f"\n{reason}"
+        super().__init__(self.message)
+
+
 class MatchingCRSError(Exception):
     """Exception raised when CRS values do not match."""
 

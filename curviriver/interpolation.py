@@ -17,6 +17,7 @@ from curviriver.exceptions import (
     InputTypeError,
     InputValueError,
     MatchingCRSError,
+    MissingArgError,
     ParallelImportError,
 )
 
@@ -70,7 +71,7 @@ def pc_average_distance(
         return avg_distance
 
     if centerline is None:
-        raise ValueError("Centerline must be provided when cross_section is True")
+        raise MissingArgError("centerline", "Required when ``cross_section=True``")
 
     cross_sections = extract_xsections(point_cloud, centerline)
     prev_section = next(cross_sections, None)
