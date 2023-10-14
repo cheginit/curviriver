@@ -1,7 +1,6 @@
 """Some helper functions."""
 from __future__ import annotations
 
-from itertools import combinations
 from typing import TYPE_CHECKING, TypeVar, cast
 
 import geopandas as gpd
@@ -9,7 +8,7 @@ import numpy as np
 import numpy.typing as npt
 from shapely import Polygon
 
-from curviriver.exceptions import GeometryError, InputTypeError
+from curviriver.exceptions import InputTypeError
 
 if TYPE_CHECKING:
     from shapely import MultiPolygon
