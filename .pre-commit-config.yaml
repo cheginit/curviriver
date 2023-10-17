@@ -1,6 +1,6 @@
 repos:
 - repo: https://github.com/hadialqattan/pycln
-  rev: v2.2.2
+  rev: v2.3.0
   hooks:
   - id: pycln
     name: Find and remove unused import statements with pycln
@@ -39,7 +39,7 @@ repos:
     args: [-t, py38, -l, '100']
 
 - repo: https://github.com/charliermarsh/ruff-pre-commit
-  rev: v0.0.292
+  rev: v0.1.0
   hooks:
   - id: ruff
     name: Linting with Ruff
@@ -103,7 +103,7 @@ repos:
     exclude: \.(html|svg)$
 
 - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
-  rev: v2.10.0
+  rev: v2.11.0
   hooks:
   - id: pretty-format-yaml
     args: [--autofix, --indent, '2']
