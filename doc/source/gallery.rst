@@ -1,7 +1,7 @@
 Example Gallery
 ===============
 
-The following notebooks demonstrate capabilities of GeoMesher.
+The following notebooks demonstrate capabilities of CurviRiver.
 
 .. include:: examples-gallery.txt
 

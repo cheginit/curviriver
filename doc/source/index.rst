@@ -1,34 +1,34 @@
-GeoMesher: Meshing a GeoDataFrame using Gmsh
-============================================
+CurviRiver: Curvilinear Mesh Generator for Rivers
+=================================================
 
-.. image:: https://github.com/cheginit/geomesher/actions/workflows/test.yml/badge.svg
-   :target: https://github.com/cheginit/geomesher/actions/workflows/test.yml
+.. image:: https://github.com/cheginit/curviriver/actions/workflows/test.yml/badge.svg
+   :target: https://github.com/cheginit/curviriver/actions/workflows/test.yml
    :alt: CI
 
-.. image:: https://img.shields.io/pypi/v/geomesher.svg
-    :target: https://pypi.python.org/pypi/geomesher
+.. image:: https://img.shields.io/pypi/v/curviriver.svg
+    :target: https://pypi.python.org/pypi/curviriver
     :alt: PyPi
 
-.. image:: https://img.shields.io/conda/vn/conda-forge/geomesher.svg
-    :target: https://anaconda.org/conda-forge/geomesher
+.. image:: https://img.shields.io/conda/vn/conda-forge/curviriver.svg
+    :target: https://anaconda.org/conda-forge/curviriver
     :alt: Conda Version
 
-.. image:: https://codecov.io/gh/cheginit/geomesher/graph/badge.svg
-    :target: https://codecov.io/gh/cheginit/geomesher
+.. image:: https://codecov.io/gh/cheginit/curviriver/graph/badge.svg
+    :target: https://codecov.io/gh/cheginit/curviriver
     :alt: CodeCov
 
-.. image:: https://img.shields.io/pypi/pyversions/geomesher.svg
-    :target: https://pypi.python.org/pypi/geomesher
+.. image:: https://img.shields.io/pypi/pyversions/curviriver.svg
+    :target: https://pypi.python.org/pypi/curviriver
     :alt: Python Versions
 
 |
 
-.. image:: https://static.pepy.tech/badge/geomesher
-    :target: https://pepy.tech/project/geomesher
+.. image:: https://static.pepy.tech/badge/curviriver
+    :target: https://pepy.tech/project/curviriver
     :alt: Downloads
 
-.. image:: https://www.codefactor.io/repository/github/cheginit/geomesher/badge/main
-    :target: https://www.codefactor.io/repository/github/cheginit/geomesher/overview/main
+.. image:: https://www.codefactor.io/repository/github/cheginit/curviriver/badge/main
+    :target: https://www.codefactor.io/repository/github/cheginit/curviriver/overview/main
     :alt: CodeFactor
 
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
@@ -44,32 +44,28 @@ GeoMesher: Meshing a GeoDataFrame using Gmsh
 Features
 --------
 
-GeoMesher is a fork of `pandamesh <https://github.com/Deltares/pandamesh>`__. The original
-package included two mesh generators: `Triangle <https://www.cs.cmu.edu/~quake/triangle.html>`__
-and `Gmsh <https://gmsh.info/>`__. This fork only includes the Gmsh mesh generator since
-Triangle seems to be not maintained anymore. Also, GeoMesher adds the following new
-functionalities:
+CurviRiver takes as input a Polygon of a river segment and generates a 2D or 3D
+curvilinear mesh that can be used for hydrodynamic or hydrological modeling.
+The mesh is generated in three main steps:
 
-* A new method for returning the generated mesh as a GeoDataFrame.
-* A new function called ``gdf_mesher`` that can generate a mesh from a GeoDataFrame
-  with a single function call and with sane defaults for the mesh generator.
-* Remap a scalar field from the source GeoDataFrame to the generated mesh,
-  using an area weighted interpolation method
-  (based on `Tobler <https://github.com/pysal/tobler>`__).
-* Handle ``MultiPolygon`` geometries in the source GeoDataFrame.
+- Determining the centerline of the input Polygon using Voroni diagram
+  Dijkstra's algorithm,
+- Smoothing the generated centerline with a B-spline curve,
+- Computing the tangent angles of the centerline at each point along
+  the centerline and generating cross-sections perpendicular to the
+  centerline at given intervals,
+- Generating a 2D mesh from vertices of the cross-sections,
+- Generating a 3D mesh if depth data is provided, by determining the depth of
+  2D mesh vertices from the depth data using Inverse Distance Weighting (IDW).
 
-Note that the remapping functionality of GeoMesher is a simple areal interpolation method.
-For more advanced interpolation methods, please use `Tobler <https://pysal.org/tobler/index.html>`__.
+.. image:: https://raw.githubusercontent.com/cheginit/curviriver/main/doc/source/_static/curvilinear.png
+  :target: https://github.com/cheginit/curviriver
 
-.. image:: https://raw.githubusercontent.com/cheginit/geomesher/main/doc/source/_static/demo.png
-  :target: https://github.com/cheginit/geomesher
-
-Credits
+Support
 -------
 
-GeoMesher is a fork of `pandamesh <https://github.com/Deltares/pandamesh>`__ (MIT License)
-and uses one of the modules in
-`Tobler <https://pysal.org/tobler/index.html>`__ (BSD-3-Clause License).
+The work for this project is funded by USGS through Water Resources Research Institutes
+(`WRRI <https://water.usgs.gov/wrri/index.php>`__).
 
 .. toctree::
     :hidden:

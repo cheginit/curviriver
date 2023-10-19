@@ -1,17 +1,17 @@
 [
   {
     "version": "dev",
-    "url": "https://geomesher.readthedocs.io/en/latest/"
+    "url": "https://curviriver.readthedocs.io/en/latest/"
   },
   {
     "name": "0.1.0 (stable)",
-    "version": "v0.1.1",
-    "url": "https://geomesher.readthedocs.io/en/v0.1.1/",
+    "version": "v0.1.0",
+    "url": "https://curviriver.readthedocs.io/en/v0.1.0/",
     "preferred": true
   },
   {
     "name": "0.1.0",
     "version": "v0.1.0",
-    "url": "https://geomesher.readthedocs.io/en/stable/"
+    "url": "https://curviriver.readthedocs.io/en/stable/"
   }
 ]
