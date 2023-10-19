@@ -53,13 +53,15 @@ CurviRiver takes as input a Polygon of a river segment and generates a 2D or 3D
 curvilinear mesh that can be used for hydrodynamic or hydrological modeling.
 The mesh is generated in three main steps:
 
-- Determining the centerline of the input Polygon using Voroni diagram,
-- Generating a B-spline curve from the centerline,
-- Computing the angle of the centerline at each point and generating
-  cross-sections perpendicular to the centerline at given intervals,
-- Generate a 2D mesh from vertices of the cross-sections,
-- If depth data is provided, generate a 3D mesh by determining the depth of
-  each vertex from the depth data using Inverse Distance Weighting (IDW).
+- Determining the centerline of the input Polygon using Voroni diagram
+  Dijkstra's algorithm,
+- Smoothing the generated centerline with a B-spline curve,
+- Computing the tangent angles of the centerline at each point along
+  the centerline and generating cross-sections perpendicular to the
+  centerline at given intervals,
+- Generating a 2D mesh from vertices of the cross-sections,
+- Generating a 3D mesh if depth data is provided, by determining the depth of
+  2D mesh vertices from the depth data using Inverse Distance Weighting (IDW).
 
 Installation
 ------------
@@ -79,20 +81,43 @@ or using ``conda`` (``mamba``):
 Quick start
 -----------
 
+We demonstrate capabilities of CurviRiver by generating a
+curvilinear mesh along a portion of the Columbia River and
+interpolating
+`eHydro <https://www.sam.usace.army.mil/Missions/Spatial-Data-Branch/eHYDRO/>`__
+topobathy data on to the generated mesh vertices.
+
+First, we use `PyGeoHydro <https://docs.hyriver.io/readme/pygeohydro.html>`__
+to retrieve eHydro data for a part of the Columbia River that topobathy data are
+available. We get both the survey outline and the bathymetry data.
+Then, we use the survey outline polygon to generate a curvilinear mesh.
+We use the ``poly_segmentize`` function for this purpose that has two
+parameters: Spacing in streamwise direction and number of points in
+cross-stream direction. The function returns a ``geopandas.GeoSeries``
+of the cross-sections, vertices of which are the mesh points.
+
 .. code:: python
 
-    import geopandas as gpd
+    from pygeohydro import EHydro
     import curviriver as cr
 
+    ehydro = EHydro("outlines")
+    geom = ehydro.survey_grid.loc[ehydro.survey_grid["OBJECTID"] == 210, "geometry"].iloc[0]
+    outline = ehydro.bygeom(geom, ehydro.survey_grid.crs)
 
-.. image:: https://raw.githubusercontent.com/cheginit/curviriver/main/doc/source/_static/demo.png
+    poly = outline.convex_hull.unary_union
+    spacing_streamwise = 2000
+    xs_npts = 5
+    stream = cr.poly_segmentize(poly, outline.crs, spacing_streamwise, xs_npts)
+
+.. image:: https://raw.githubusercontent.com/cheginit/curviriver/main/doc/source/_static/curvilinear.png
   :target: https://github.com/cheginit/curviriver
 
 Contributing
 ------------
 
 Contributions are very welcomed. Please read
-`CONTRIBUTING.rst <https://github.com/cheginit/pygeoogc/blob/main/CONTRIBUTING.rst>`__
+`CONTRIBUTING.rst <https://github.com/cheginit/curviriver/blob/main/CONTRIBUTING.rst>`__
 file for instructions.
 
 Support

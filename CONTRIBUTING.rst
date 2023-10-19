@@ -39,8 +39,8 @@ and "help wanted" is open to whoever wants to implement it.
 Write Documentation
 ~~~~~~~~~~~~~~~~~~~
 
-GeoMesher could always use more documentation, whether as part of the
-official GeoMesher docs, in docstrings, or even on the web in blog posts,
+CurviRiver could always use more documentation, whether as part of the
+official CurviRiver docs, in docstrings, or even on the web in blog posts,
 articles, and such.
 
 Submit Feedback
@@ -58,10 +58,10 @@ If you are proposing a feature:
 Get Started!
 ------------
 
-Ready to contribute? Here's how to set up GeoMesher for local development.
+Ready to contribute? Here's how to set up CurviRiver for local development.
 
-1. Fork the GeoMesher repo through the GitHub website.
-2. Clone your fork locally and add the main GeoMesher as the upstream remote:
+1. Fork the CurviRiver repo through the GitHub website.
+2. Clone your fork locally and add the main CurviRiver as the upstream remote:
 
 .. code-block:: console
 

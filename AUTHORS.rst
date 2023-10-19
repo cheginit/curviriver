@@ -1,11 +1,11 @@
-==========
-Developers
-==========
+================
+Development Team
+================
 
-Development Lead
-----------------
+Lead
+----
 
-* Taher Chegini <cheginit@gmail.com>
+* `Taher Cheginil <https://github.com/cheginit>`__
 
 Contributors
 ------------
