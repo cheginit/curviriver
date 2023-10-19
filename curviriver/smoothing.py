@@ -329,7 +329,7 @@ def interpolate_na(
         raise InputTypeError("x/y/z", "1D arrays of the same size")
 
     nan_mask = np.isnan(z)
-    if nan_mask.size == 0:
+    if nan_mask.sum() == 0:
         return z
 
     if nan_mask.all():
@@ -338,16 +338,16 @@ def interpolate_na(
     first_non_nan, last_non_nan = np.argwhere(~nan_mask)[[0, -1], 0]
 
     # Fill beginning and end with fill_value
+    z = z.copy()
     z[:first_non_nan] = fill_value
     z[last_non_nan + 1 :] = fill_value
 
     # Interpolate NaNs in the middle
-    interp_range = np.r_[first_non_nan : last_non_nan + 1]
-    interp_nan_mask = nan_mask[interp_range]
-    r = np.hypot(np.diff(x[interp_range]), np.diff(y[interp_range])).cumsum()
+    interp_slice = np.r_[first_non_nan : last_non_nan + 1]
+    interp_notna = ~nan_mask[interp_slice]
+    r = np.hypot(np.diff(x[interp_slice]), np.diff(y[interp_slice])).cumsum()
     r = np.insert(r, 0, 0)
     # Apply B-spline interpolation to fill NaNs in the interpolation range
-    z[interp_range] = make_bspline(
-        r[~interp_nan_mask], z[interp_range][~interp_nan_mask], len(interp_range)
-    ).y
+    bspline = make_bspline(r[interp_notna], z[interp_slice][interp_notna], len(interp_slice))
+    z[interp_slice] = bspline.y
     return z
