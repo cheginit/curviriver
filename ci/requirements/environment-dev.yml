@@ -5,14 +5,16 @@ channels:
 dependencies:
 - python>=3.11
 
+- cytoolz
+- geopandas >=0.12
+- networkx >=2.5
 - numpy >=1.21
 - pandas >=1
-- geopandas-base >=0.12
 - pyproj >=2.2
 - scikit-learn >=1.3
 - scipy
-- shapely >=2.0
-# optional
+- shapely >=2
+# optional deps
 - joblib
 
 # dev deps
@@ -25,6 +27,10 @@ dependencies:
 - py3dep
 - pygeohydro
 - pyflwdir
+- psutil
+- pytest-cov
+- pytest-xdist
+- pytest-sugar
 
 - pip
 - pip:
