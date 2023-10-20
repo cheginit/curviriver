@@ -207,7 +207,7 @@ known-first-party = [
 ]
 
 [tool.pytest.ini_options]
-addopts = "--ignore=noxfile.py -n=auto -v --cov=curviriver --cov-report xml --durations=5"
+addopts = "--ignore=noxfile.py -n=auto -v --cov=curviriver --cov-report xml --junitxml=pytest.xml --durations=5"
 doctest_optionflags = 'NORMALIZE_WHITESPACE IGNORE_EXCEPTION_DETAIL NUMBER'
 filterwarnings = [
   "ignore:.*distutils.*",
