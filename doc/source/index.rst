@@ -44,12 +44,12 @@ CurviRiver: Curvilinear Mesh Generator for Rivers
 Features
 --------
 
-CurviRiver takes as input a Polygon of a river segment and generates a 2D or 3D
+CurviRiver takes as input a Polygon of a river segment and generates a 2/3D
 curvilinear mesh that can be used for hydrodynamic or hydrological modeling.
-The mesh is generated in three main steps:
+The mesh is generated in the following main steps:
 
 - Determining the centerline of the input Polygon using Voroni diagram
-  Dijkstra's algorithm,
+  and Dijkstra's algorithm,
 - Smoothing the generated centerline with a B-spline curve,
 - Computing the tangent angles of the centerline at each point along
   the centerline and generating cross-sections perpendicular to the

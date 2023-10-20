@@ -252,7 +252,7 @@ favicons = [
 ]
 
 # configuration for opengraph
-description = "Generate mesh from geospatial data using Gmsh."
+description = "Generate curvilinear mesh from river outline polygons."
 ogp_site_url = "https://curviriver.readthedocs.io/en/latest"
 ogp_image = "https://raw.githubusercontent.com/cheginit/curviriver/main/doc/source/_static/logo.png"
 ogp_custom_meta_tags = [
