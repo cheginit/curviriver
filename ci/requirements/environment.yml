@@ -26,12 +26,12 @@ dependencies:
 - pytest-xdist
 - pytest-sugar
 
-- pip
-- pip:
-  - git+https://github.com/hyriver/async-retriever.git
-  - git+https://github.com/hyriver/hydrosignatures.git
-  - git+https://github.com/hyriver/pygeoogc.git
-  - git+https://github.com/hyriver/pygeoutils.git
-  - git+https://github.com/hyriver/pynhd.git
-  - git+https://github.com/hyriver/py3dep.git
-  - git+https://github.com/hyriver/pygeohydro.git
+# - pip
+# - pip:
+#   - git+https://github.com/hyriver/async-retriever.git
+#   - git+https://github.com/hyriver/hydrosignatures.git
+#   - git+https://github.com/hyriver/pygeoogc.git
+#   - git+https://github.com/hyriver/pygeoutils.git
+#   - git+https://github.com/hyriver/pynhd.git
+#   - git+https://github.com/hyriver/py3dep.git
+#   - git+https://github.com/hyriver/pygeohydro.git
