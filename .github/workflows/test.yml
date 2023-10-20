@@ -55,7 +55,7 @@ jobs:
     - name: Version info
       run: |-
         NAME="$(echo ${REPO_NAME} | tr - _)"
-        mamba list
+        conda list
         python -c "import ${NAME}; print(${NAME}.__version__)"
     - name: Run pytest
       run: |-
