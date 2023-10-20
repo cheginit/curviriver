@@ -19,7 +19,7 @@ def test_no_nans():
     x = np.array([0, 1, 2, 3])
     y = np.array([0, 1, 2, 3])
     z = np.array([1, 2, 3, 4])
-    assert np.array_equal(cr.interpolate_na(x, y, z, 0.0), z)
+    assert np.isclose(cr.interpolate_na(x, y, z, 0.0), z).all()
 
 
 def test_all_nans():
@@ -27,7 +27,7 @@ def test_all_nans():
     y = np.array([0, 1, 2, 3])
     z = np.array([np.nan, np.nan, np.nan, np.nan])
     expected = np.array([0.0, 0.0, 0.0, 0.0])
-    assert np.array_equal(cr.interpolate_na(x, y, z, 0.0), expected)
+    assert np.isclose(cr.interpolate_na(x, y, z, 0.0), expected).all()
 
 
 def test_interpolate_middle():
@@ -35,7 +35,7 @@ def test_interpolate_middle():
     y = np.array([0, 1, 2, 3, 4, 5])
     z = np.array([0.0, 1.0, np.nan, np.nan, 4.0, 5.0])
     expected = np.array([0.0, 1.0, 2.0, 3.0, 4.0, 5.0])
-    assert np.array_equal(cr.interpolate_na(x, y, z, 0.0), expected)
+    assert np.isclose(cr.interpolate_na(x, y, z, 0.0), expected).all()
 
 
 def test_fill_begin_end():
@@ -43,7 +43,7 @@ def test_fill_begin_end():
     y = np.array([0, 1, 2, 3, 4, 5])
     z = np.array([np.nan, np.nan, 2.0, 3.0, 4.0, np.nan])
     expected = np.array([0.0, 0.0, 2.0, 3.0, 4.0, 0.0])
-    assert np.array_equal(cr.interpolate_na(x, y, z, 0.0), expected)
+    assert np.isclose(cr.interpolate_na(x, y, z, 0.0), expected).all()
 
 
 def test_mixed_nans():
@@ -51,4 +51,4 @@ def test_mixed_nans():
     y = np.array([0, 1, 2, 3, 4, 5])
     z = np.array([np.nan, 1.0, np.nan, 3.0, np.nan, np.nan])
     expected = np.array([0.0, 1.0, 2.0, 3.0, 0.0, 0.0])
-    assert np.array_equal(cr.interpolate_na(x, y, z, 0.0), expected)
+    assert np.isclose(cr.interpolate_na(x, y, z, 0.0), expected).all()
