@@ -62,3 +62,4 @@ doc/source/*.txt
 .DS_Store
 plots/
 *.mp4
+pytest.xml
