@@ -85,7 +85,9 @@ We demonstrate capabilities of CurviRiver by generating a
 curvilinear mesh along a portion of the Columbia River and
 interpolating
 `eHydro <https://www.sam.usace.army.mil/Missions/Spatial-Data-Branch/eHYDRO/>`__
-topobathy data on to the generated mesh vertices.
+topobathy data on to the generated mesh vertices. Please visit the
+`example gallery <https://curviriver.readthedocs.io/en/latest/gallery.html>`__
+for more examples.
 
 First, we use `PyGeoHydro <https://docs.hyriver.io/readme/pygeohydro.html>`__
 to retrieve eHydro data for a part of the Columbia River that topobathy data are
